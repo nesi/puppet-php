@@ -27,11 +27,10 @@
 #     along with this php Puppet module.  If not, see <http://www.gnu.org/licenses/>.
 
 # [Remember: No empty lines between comments and class definition]
-class php::mod(
+define php::mod(
 	$ensure				= installed,
-	$module_name
 ){
-	$package_name = "${php::params::mod_prefix}${module_name}"
+	$package_name = "${php::params::mod_prefix}${name}"
 
 	package{$package_name:
 		ensure => $ensure
