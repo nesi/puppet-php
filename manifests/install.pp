@@ -1,6 +1,6 @@
-# Class: php
+# Class: php::install
 #
-# This module manages php
+# This module installs php
 #
 # Parameters:
 #
@@ -9,7 +9,8 @@
 # Requires:
 #
 # Sample Usage:
-#
+# This module should not be called directly, use;
+# include php
 
 # This file is part of the php Puppet module.
 #
@@ -27,22 +28,22 @@
 #     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 # [Remember: No empty lines between comments and class definition]
-class php (
-	$ensure		= installed,
-	$cli			= purged,
-	$dev			= purged
+class php::install(
+	$ensure,
+	$cli,
+	$dev
 ){
 
-	case $operatingsystem {
-		Ubuntu:{
-			class {'php::install':
-				ensure 	=> $ensure,
-				cli 		=> $cli,
-				dev			=> $dev,
-		}
-		default:{
-			warning("The php module does not support ${operatingsystem} on ${fqdn}.")
-		}
+	package{$php::params::package:
+		ensure	=> $ensure
+	}
+
+	package{$php::params::cli_package:
+		ensure	=> $cli
+	}
+
+	package{$php::params::dev_package:
+		ensure	=> $dev
 	}
 
 }
