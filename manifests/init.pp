@@ -39,6 +39,7 @@ class php (
 				ensure 	=> $ensure,
 				cli 		=> $cli,
 				dev			=> $dev,
+			}
 		}
 		default:{
 			warning("The php module does not support ${operatingsystem} on ${fqdn}.")

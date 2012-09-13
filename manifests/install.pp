@@ -39,11 +39,13 @@ class php::install(
 	}
 
 	package{$php::params::cli_package:
-		ensure	=> $cli
+		ensure	=> $cli,
+		require => Package[$php::params::package],
 	}
 
 	package{$php::params::dev_package:
-		ensure	=> $dev
+		ensure	=> $dev,
+		require => Package[$php::params::package],
 	}
 
 }

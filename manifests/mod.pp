@@ -30,6 +30,9 @@
 define php::mod(
 	$ensure				= installed,
 ){
+
+	require php
+
 	$package_name = "${php::params::mod_prefix}${name}"
 
 	package{$package_name:
