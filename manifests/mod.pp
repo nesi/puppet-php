@@ -32,6 +32,7 @@ define php::mod(
 ){
 
 	require php
+	include php::params
 
 	$package_name = "${php::params::mod_prefix}${name}"
 

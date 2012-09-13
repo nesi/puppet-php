@@ -34,6 +34,8 @@ class php::install(
 	$dev
 ){
 
+	include php::params
+
 	package{$php::params::package:
 		ensure	=> $ensure
 	}
